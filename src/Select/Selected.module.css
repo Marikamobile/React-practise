@@ -1,0 +1,33 @@
+import React from "react";
+import c from './Select.module.css';
+type ItemType = {
+    title: string
+    value: any
+}
+
+export type SelectPropsType = {
+    value: any
+    onChange: (value: any) => void
+    items: ItemType[]
+}
+const findItem = (title: string) => {
+
+}
+
+export function Selectik(props: SelectPropsType) {
+    const selectedItem = props.items.find(i => i.value === props.value)
+    return (
+        <div>
+            <select>
+                <option value="">Minsk</option>
+                <option value="">Moscow</option>
+                <option value="">Madrid</option>
+            </select>
+            <select className={c.select}>
+            <div>{selectedItem && selectedItem.title}</div>
+            {props.items.map(it => <div>{it.title}</div>)}
+            </select>
+
+        </div>
+    )
+}
